@@ -5,18 +5,33 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tulsa Kayaking - Coming Soon</title>
     <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+        
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Arial', sans-serif;
+            font-family: 'Inter', sans-serif;
             scroll-behavior: smooth;
+        }
+
+        :root {
+            --primary: #3B82F6;
+            --primary-dark: #2563EB;
+            --secondary: #10B981;
+            --accent: #8B5CF6;
+            --background: #0F172A;
+            --text: #F8FAFC;
+            --text-secondary: #94A3B8;
+            --surface: rgba(255, 255, 255, 0.05);
+            --surface-hover: rgba(255, 255, 255, 0.1);
         }
 
         body {
             min-height: 100vh;
-            color: white;
+            color: var(--text);
             overflow-x: hidden;
+            background-color: var(--background);
         }
 
         .nav-bar {
@@ -24,15 +39,17 @@
             top: 0;
             left: 0;
             right: 0;
-            background: rgba(0, 0, 0, 0.8);
+            background: rgba(15, 23, 42, 0.8);
             padding: 1rem;
             z-index: 1000;
             transition: all 0.3s ease;
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
         }
 
         .nav-bar.scrolled {
-            padding: 0.5rem;
-            background: rgba(0, 0, 0, 0.95);
+            padding: 0.75rem;
+            background: rgba(15, 23, 42, 0.95);
         }
 
         .nav-content {
@@ -45,9 +62,10 @@
 
         .logo {
             font-size: 1.5rem;
-            font-weight: bold;
-            color: white;
+            font-weight: 700;
+            color: var(--primary);
             text-decoration: none;
+            letter-spacing: -0.5px;
         }
 
         .nav-links {
@@ -56,13 +74,17 @@
         }
 
         .nav-links a {
-            color: white;
+            color: var(--text);
             text-decoration: none;
-            transition: color 0.3s ease;
+            transition: all 0.3s ease;
+            font-weight: 500;
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
         }
 
         .nav-links a:hover {
-            color: #2196f3;
+            color: var(--primary);
+            background: var(--surface-hover);
         }
 
         .section {
@@ -71,30 +93,80 @@
             align-items: center;
             justify-content: center;
             position: relative;
-            padding: 80px 20px;
+            padding: 120px 24px;
         }
 
         #home {
-            background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
-                        url('https://cdn2.picryl.com/photo/2011/07/10/capt-jose-medina-joint-detention-group-administration-c56aa5-1024.jpg') center/cover;
+            background: linear-gradient(rgba(15, 23, 42, 0.8), rgba(15, 23, 42, 0.8)),
+                        url('https://images.unsplash.com/photo-1559523161-0fc0d8b38a7a?auto=format&fit=crop&q=80') center/cover;
+            position: relative;
+        }
+
+        #home::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: inherit;
+            background-size: cover;
+            background-position: center;
+            filter: brightness(0.7);
+            z-index: -1;
         }
 
         #about {
-            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
-                        url('https://images.unsplash.com/photo-1544551763-46a013bb70d5?auto=format&fit=crop&q=80') center/cover;
+            background: linear-gradient(rgba(15, 23, 42, 0.8), rgba(15, 23, 42, 0.8)),
+                        url('https://images.unsplash.com/photo-1572723019376-2f673a0dd976?auto=format&fit=crop&q=80') center/cover;
+            position: relative;
+        }
+
+        #about::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: inherit;
+            background-size: cover;
+            background-position: center;
+            filter: brightness(0.7);
+            z-index: -1;
         }
 
         #contact {
-            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
-                        url('https://images.unsplash.com/photo-1511649475669-e288648b2339?auto=format&fit=crop&q=80') center/cover;
+            background: linear-gradient(rgba(15, 23, 42, 0.8), rgba(15, 23, 42, 0.8)),
+                        url('https://images.unsplash.com/photo-1501785888041-af3ef285b470?auto=format&fit=crop&q=80') center/cover;
+            position: relative;
+        }
+
+        #contact::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: inherit;
+            background-size: cover;
+            background-position: center;
+            filter: brightness(0.7);
+            z-index: -1;
         }
 
         .container {
-            max-width: 800px;
+            max-width: 1200px;
             margin: 0 auto;
             opacity: 0;
             transform: translateY(20px);
-            transition: all 0.8s ease;
+            transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+            background: rgba(15, 23, 42, 0.8);
+            padding: 3rem;
+            border-radius: 24px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(12px);
         }
 
         .container.visible {
@@ -103,59 +175,78 @@
         }
 
         h1 {
-            font-size: 3.5rem;
-            margin-bottom: 1rem;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+            font-size: 4rem;
+            margin-bottom: 1.5rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            letter-spacing: -1px;
+            line-height: 1.1;
         }
 
         .tagline {
             font-size: 1.5rem;
             margin-bottom: 2rem;
-            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+            color: var(--text-secondary);
+            font-weight: 500;
+            line-height: 1.5;
         }
 
         .coming-soon {
             font-size: 2rem;
             margin-bottom: 2rem;
-            color: #ffd700;
-            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+            color: var(--secondary);
+            font-weight: 600;
         }
 
         .newsletter-form {
-            background: rgba(255, 255, 255, 0.1);
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(12px);
             padding: 2rem;
-            border-radius: 10px;
-            backdrop-filter: blur(5px);
-            max-width: 500px;
-            width: 90%;
+            border-radius: 24px;
+            color: var(--text);
         }
 
         .newsletter-form p {
             margin-bottom: 1rem;
+            line-height: 1.6;
         }
 
         .email-input {
             width: 100%;
-            padding: 12px;
+            padding: 1rem;
             margin-bottom: 1rem;
-            border: none;
-            border-radius: 5px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
             font-size: 1rem;
+            background: rgba(255, 255, 255, 0.05);
+            color: var(--text);
+            transition: all 0.3s ease;
+        }
+
+        .email-input:focus {
+            outline: none;
+            border-color: var(--primary);
+            background: rgba(255, 255, 255, 0.1);
         }
 
         .submit-btn {
-            background: #2196f3;
+            background: var(--primary);
             color: white;
             border: none;
-            padding: 12px 24px;
-            border-radius: 5px;
+            padding: 1rem 2rem;
+            border-radius: 12px;
             font-size: 1rem;
             cursor: pointer;
-            transition: background 0.3s ease;
+            transition: all 0.3s ease;
+            font-weight: 500;
         }
 
         .submit-btn:hover {
-            background: #1976d2;
+            background: var(--primary-dark);
+            transform: translateY(-2px);
         }
 
         .menu-toggle {
@@ -292,7 +383,7 @@
             }
 
             h1 {
-                font-size: 2.5rem;
+                font-size: 3rem;
             }
             .tagline {
                 font-size: 1.2rem;
@@ -307,92 +398,58 @@
             position: fixed;
             bottom: 20px;
             right: 20px;
-            background: rgba(0, 0, 0, 0.8);
-            padding: 15px;
-            border-radius: 10px;
+            background: rgba(15, 23, 42, 0.9);
+            padding: 1rem 1.5rem;
+            border-radius: 16px;
             display: flex;
             align-items: center;
             gap: 10px;
             z-index: 1000;
-            backdrop-filter: blur(5px);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
         }
 
         .music-player button {
-            background: #2196f3;
+            background: var(--primary);
             color: white;
             border: none;
-            padding: 8px 15px;
-            border-radius: 5px;
-            cursor: pointer;
-            font-size: 0.9rem;
-            transition: background 0.3s ease;
+            padding: 0.75rem 1.25rem;
+            border-radius: 12px;
+            font-weight: 500;
+            transition: all 0.2s ease;
         }
 
         .music-player button:hover {
-            background: #1976d2;
+            background: var(--primary-dark);
+            transform: translateY(-2px);
         }
 
-        .music-player .volume-control {
-            width: 100px;
+        .volume-control {
+            accent-color: var(--primary);
         }
 
         /* Pricing Section Styles */
-        .water-bg {
+        #pricing {
+            background: linear-gradient(rgba(15, 23, 42, 0.8), rgba(15, 23, 42, 0.8)),
+                        url('https://images.unsplash.com/photo-1439066615861-d1af74d74000?auto=format&fit=crop&q=80') center/cover;
+            position: relative;
+        }
+
+        #pricing::before {
+            content: '';
             position: absolute;
             top: 0;
             left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(
-                0deg,
-                rgba(33, 150, 243, 0.3),
-                rgba(33, 150, 243, 0.1)
-            );
+            right: 0;
+            bottom: 0;
+            background-image: inherit;
+            background-size: cover;
+            background-position: center;
+            filter: brightness(0.7);
             z-index: -1;
-            overflow: hidden;
-        }
-
-        .wave {
-            position: absolute;
-            width: 200%;
-            height: 100%;
-            background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 800 88.7'%3E%3Cpath d='M800 56.9c-155.5 0-204.9-50-405.5-49.9-200 0-250 49.9-394.5 49.9v31.8h800v-.2-31.6z' fill='%23ffffff22'/%3E%3C/svg%3E");
-            background-repeat: repeat-x;
-            animation: wave 15s linear infinite;
-        }
-
-        .wave:nth-child(2) {
-            top: 20%;
-            animation: wave 25s linear infinite reverse;
-            opacity: 0.5;
-        }
-
-        .wave:nth-child(3) {
-            top: 40%;
-            animation: wave 20s linear infinite;
-            opacity: 0.3;
-        }
-
-        @keyframes wave {
-            0% {
-                transform: translateX(0);
-            }
-            100% {
-                transform: translateX(-50%);
-            }
-        }
-
-        #pricing {
-            background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),
-                        url('https://images.unsplash.com/photo-1572723019376-2f673a0dd976') center/cover;
-            padding: 100px 20px;
-            position: relative;
-            overflow: hidden;
         }
 
         .pricing-container {
-            position: relative;
-            z-index: 1;
             max-width: 1200px;
             margin: 0 auto;
             display: grid;
@@ -402,16 +459,18 @@
         }
 
         .pricing-card {
-            background: rgba(255, 255, 255, 0.95);
-            border-radius: 15px;
-            padding: 2rem;
-            color: #333;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s ease;
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 24px;
+            padding: 2.5rem;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(12px);
+            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
         }
 
         .pricing-card:hover {
-            transform: translateY(-5px);
+            transform: translateY(-8px);
+            background: rgba(255, 255, 255, 0.05);
+            border-color: var(--primary);
         }
 
         .pricing-header {
@@ -422,9 +481,11 @@
         }
 
         .pricing-title {
-            font-size: 1.8rem;
-            color: #1976d2;
-            margin-bottom: 0.5rem;
+            font-size: 2rem;
+            color: var(--primary);
+            margin-bottom: 0.75rem;
+            font-weight: 600;
+            letter-spacing: -0.5px;
         }
 
         .pricing-subtitle {
@@ -437,21 +498,35 @@
             margin-bottom: 2rem;
         }
 
+        .price-list li span:first-child {
+            font-size: 1.1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .price-list li span:first-child::before {
+            content: '🚣';
+            font-size: 1.2rem;
+        }
+
         .price-list li {
-            padding: 0.8rem 0;
+            padding: 1rem 0;
             border-bottom: 1px solid #eee;
             display: flex;
             justify-content: space-between;
             align-items: center;
-        }
-
-        .price-list li:last-child {
-            border-bottom: none;
+            font-size: 1.1rem;
         }
 
         .price-highlight {
-            color: #1976d2;
-            font-weight: bold;
+            color: var(--text);
+            font-weight: 600;
+            font-size: 1.25rem;
+            background: rgba(59, 130, 246, 0.1);
+            padding: 0.75rem 1.25rem;
+            border-radius: 12px;
+            border: 1px solid rgba(59, 130, 246, 0.2);
         }
 
         .reservation-note {
@@ -467,21 +542,110 @@
         .section-title {
             text-align: center;
             margin-bottom: 3rem;
+            background: rgba(0, 0, 0, 0.7);
+            padding: 2rem;
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
         }
 
         .section-title h2 {
             font-size: 2.5rem;
-            color: white;
+            color: #2196f3;
             margin-bottom: 1rem;
             text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
         }
 
         .section-title p {
-            color: #fff;
+            color: #e3f2fd;
             font-size: 1.2rem;
             max-width: 600px;
             margin: 0 auto;
             text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+        }
+
+        /* Location & Safety Section Styles */
+        .info-card {
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 24px;
+            padding: 2.5rem;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(12px);
+            color: var(--text);
+            transition: all 0.3s ease;
+        }
+
+        .info-card:hover {
+            border-color: var(--primary);
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        .info-title {
+            color: #1976d2;
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+            border-bottom: 2px solid #2196f3;
+            padding-bottom: 0.5rem;
+        }
+
+        .location-details {
+            margin: 1.5rem 0;
+            line-height: 1.6;
+        }
+
+        .safety-checklist {
+            list-style: none;
+            margin: 1.5rem 0;
+        }
+
+        .safety-item {
+            background: rgba(255, 255, 255, 0.03);
+            padding: 1rem;
+            border-radius: 12px;
+            margin-bottom: 1rem;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .safety-item:hover {
+            background: rgba(255, 255, 255, 0.05);
+            border-color: var(--primary);
+        }
+
+        .safety-checkbox {
+            width: 24px;
+            height: 24px;
+            border-radius: 6px;
+            border: 2px solid var(--primary);
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .safety-text {
+            color: var(--text);
+            font-size: 1.1rem;
+            line-height: 1.5;
+        }
+
+        .safety-text.checked {
+            color: var(--text-secondary);
+            text-decoration: line-through;
+        }
+
+        .parking-map {
+            margin-top: 1rem;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        .section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at center, transparent, var(--background));
+            pointer-events: none;
         }
     </style>
 </head>
@@ -511,6 +675,8 @@
             <div class="nav-links">
                 <a href="#home">Home</a>
                 <a href="#pricing">Pricing</a>
+                <a href="#location">Location</a>
+                <a href="#safety">Safety</a>
                 <a href="#about">About</a>
                 <a href="#contact">Contact</a>
             </div>
@@ -526,11 +692,6 @@
     </section>
 
     <section id="pricing" class="section">
-        <div class="water-bg">
-            <div class="wave"></div>
-            <div class="wave"></div>
-            <div class="wave"></div>
-        </div>
         <div class="section-title">
             <h2>Rental Rates</h2>
             <p>Choose the perfect watercraft for your adventure</p>
@@ -544,19 +705,19 @@
                 <ul class="price-list">
                     <li>
                         <span>Single Kayak</span>
-                        <span class="price-highlight">$15/hour</span>
+                        <span class="price-highlight">$15/hr</span>
                     </li>
                     <li>
                         <span>Tandem Kayak</span>
-                        <span class="price-highlight">$25/hour</span>
+                        <span class="price-highlight">$25/hr</span>
                     </li>
                     <li>
                         <span>Paddleboard</span>
-                        <span class="price-highlight">$20/hour</span>
+                        <span class="price-highlight">$20/hr</span>
                     </li>
                     <li>
                         <span>Canoe</span>
-                        <span class="price-highlight">$30/hour</span>
+                        <span class="price-highlight">$30/hr</span>
                     </li>
                 </ul>
                 <div class="reservation-note">
@@ -649,6 +810,65 @@
         </div>
     </section>
 
+    <section id="location" class="section">
+        <div class="section-title">
+            <h2>Location Information</h2>
+            <p>Everything you need to know before your visit</p>
+        </div>
+        <div class="info-card">
+            <h3 class="info-title">Equipment & Parking</h3>
+            <div class="location-details">
+                <p>Our rental station is conveniently located near two main parking areas:</p>
+                <ul style="margin: 1rem 0 1rem 2rem;">
+                    <li>23rd Street parking lot</li>
+                    <li>17th Street parking lot</li>
+                </ul>
+                <p>Look for our branded Tulsa Kayaking signage at the rental station. We offer a variety of high-quality non-motorized watercraft, including kayaks, paddleboards, and canoes, designed for all skill levels.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="safety" class="section">
+        <div class="section-title">
+            <h2>Safety First</h2>
+            <p>Essential checklist for a safe and enjoyable experience</p>
+        </div>
+        <div class="info-card">
+            <h3 class="info-title">Pre-Adventure Safety Checklist</h3>
+            <p style="margin-bottom: 1rem;">Please review and check off these important safety items before your visit:</p>
+            <div class="safety-checklist">
+                <div class="safety-item">
+                    <input type="checkbox" class="safety-checkbox" onclick="toggleChecked(this)">
+                    <span class="safety-text">Check weather conditions before arrival</span>
+                </div>
+                <div class="safety-item">
+                    <input type="checkbox" class="safety-checkbox" onclick="toggleChecked(this)">
+                    <span class="safety-text">Bring sunscreen and sun protection (hat, sunglasses)</span>
+                </div>
+                <div class="safety-item">
+                    <input type="checkbox" class="safety-checkbox" onclick="toggleChecked(this)">
+                    <span class="safety-text">Wear appropriate water shoes or sandals</span>
+                </div>
+                <div class="safety-item">
+                    <input type="checkbox" class="safety-checkbox" onclick="toggleChecked(this)">
+                    <span class="safety-text">Pack water and snacks</span>
+                </div>
+                <div class="safety-item">
+                    <input type="checkbox" class="safety-checkbox" onclick="toggleChecked(this)">
+                    <span class="safety-text">Bring a change of clothes in a waterproof bag</span>
+                </div>
+                <div class="safety-item">
+                    <input type="checkbox" class="safety-checkbox" onclick="toggleChecked(this)">
+                    <span class="safety-text">Review basic water safety guidelines</span>
+                </div>
+                <div class="safety-item">
+                    <input type="checkbox" class="safety-checkbox" onclick="toggleChecked(this)">
+                    <span class="safety-text">Inform someone about your kayaking plans</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <script>
         // Handle form submission
         function handleSubmit(event) {
@@ -724,6 +944,16 @@
 
         // Initialize volume
         bgMusic.volume = 0.5;
+
+        // Safety Checklist functionality
+        function toggleChecked(checkbox) {
+            const textElement = checkbox.nextElementSibling;
+            if (checkbox.checked) {
+                textElement.classList.add('checked');
+            } else {
+                textElement.classList.remove('checked');
+            }
+        }
     </script>
 </body>
 </html> 
