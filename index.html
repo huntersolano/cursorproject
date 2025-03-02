@@ -17,6 +17,7 @@
             min-height: 100vh;
             color: white;
             overflow-x: hidden;
+            cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32"><path d="M16 2 L18 2 L20 30 L14 30 Z" fill="%23855E42"/><path d="M17 2 C17 2 8 8 4 12" stroke="%23666" stroke-width="2" fill="none"/><circle cx="3" cy="12" r="2" fill="%23666"/></svg>') 16 16, auto;
         }
 
         .nav-bar {
@@ -59,6 +60,7 @@
             color: white;
             text-decoration: none;
             transition: color 0.3s ease;
+            cursor: pointer;
         }
 
         .nav-links a:hover {
@@ -300,6 +302,11 @@
             .coming-soon {
                 font-size: 1.5rem;
             }
+        }
+
+        /* Add hover effect for clickable elements */
+        .nav-links a, .submit-btn {
+            cursor: pointer;
         }
     </style>
 </head>
