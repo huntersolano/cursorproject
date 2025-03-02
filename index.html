@@ -427,36 +427,53 @@
                 display: block;
                 padding: 0;
                 width: 100%;
+                background: rgba(255, 255, 255, 0.03);
+                border: 1px solid rgba(255, 255, 255, 0.1);
             }
 
             .pricing-card {
-                margin-bottom: 1rem;
+                margin: 0;
+                padding: 0;
                 background: none;
-                width: 100%;
+                border: none;
+                border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            }
+
+            .pricing-card:last-child {
+                border-bottom: none;
             }
 
             .pricing-header {
-                margin-bottom: 1.5rem;
-                padding: 1rem;
-                border-radius: 0;
-                border: 1px solid rgba(255, 255, 255, 0.1);
-                border-bottom: none;
-                width: 100%;
+                margin: 0;
+                padding: 0.75rem;
+                border: none;
+                background: rgba(255, 255, 255, 0.05);
+            }
+
+            .pricing-title {
+                font-size: 1.1rem;
+                color: var(--text);
+                margin: 0;
+            }
+
+            .pricing-subtitle {
+                font-size: 0.8rem;
+                margin: 0;
             }
 
             .price-list {
-                background: rgba(255, 255, 255, 0.02);
-                border: 1px solid rgba(255, 255, 255, 0.1);
-                border-radius: 0;
                 margin: 0;
-                width: 100%;
+                border: none;
             }
 
             .price-list li {
-                padding: 0.5rem 0.75rem;
-                background: rgba(255, 255, 255, 0.03);
+                padding: 0.75rem;
                 margin: 0;
-                border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+                border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                font-size: 0.9rem;
             }
 
             .price-list li:last-child {
@@ -464,24 +481,36 @@
             }
 
             .price-highlight {
+                font-size: 0.9rem;
+                font-weight: 600;
+                color: var(--primary);
                 background: none;
                 border: none;
                 padding: 0;
-                font-size: 0.9rem;
             }
 
             .reservation-note {
-                margin: 0.5rem 0;
-                border-radius: 0;
-                width: 100%;
+                display: none;
+            }
+
+            .section-title {
+                margin-bottom: 1rem;
+                padding: 1rem;
+                background: none;
+                border: none;
             }
 
             .section-title h2 {
                 font-size: 1.25rem;
+                margin-bottom: 0.5rem;
             }
 
             .section-title p {
                 font-size: 0.85rem;
+            }
+
+            #pricing {
+                padding: 60px 0.5rem;
             }
         }
 
@@ -496,6 +525,23 @@
 
             .section-title {
                 padding: 1rem 0;
+            }
+
+            .pricing-title {
+                font-size: 1rem;
+            }
+
+            .pricing-subtitle {
+                font-size: 0.75rem;
+            }
+
+            .price-list li {
+                padding: 0.6rem;
+                font-size: 0.85rem;
+            }
+
+            .price-highlight {
+                font-size: 0.85rem;
             }
         }
 
