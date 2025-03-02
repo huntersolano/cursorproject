@@ -371,11 +371,13 @@
                 top: 100%;
                 left: 0;
                 right: 0;
-                background: rgba(0, 0, 0, 0.95);
+                background: rgba(15, 23, 42, 0.95);
                 flex-direction: column;
                 padding: 1rem;
                 gap: 1rem;
                 text-align: center;
+                backdrop-filter: blur(12px);
+                border-bottom: 1px solid rgba(255, 255, 255, 0.1);
             }
 
             .nav-links.active {
@@ -385,11 +387,90 @@
             h1 {
                 font-size: 3rem;
             }
+            
             .tagline {
                 font-size: 1.2rem;
             }
+            
             .coming-soon {
                 font-size: 1.5rem;
+            }
+
+            .section {
+                padding: 100px 16px;
+            }
+
+            .container {
+                padding: 2rem 1.5rem;
+            }
+
+            .pricing-container {
+                padding: 1rem;
+                gap: 1.5rem;
+            }
+
+            .pricing-card {
+                padding: 1.5rem;
+                font-size: 0.95rem;
+            }
+
+            .pricing-title {
+                font-size: 1.75rem;
+            }
+
+            .pricing-subtitle {
+                font-size: 1rem;
+            }
+
+            .price-list li {
+                padding: 0.75rem 0;
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 0.5rem;
+            }
+
+            .price-list li span:first-child {
+                font-size: 1rem;
+            }
+
+            .price-highlight {
+                font-size: 1.1rem;
+                padding: 0.5rem 1rem;
+                width: 100%;
+                text-align: center;
+            }
+
+            .reservation-note {
+                font-size: 0.9rem;
+                padding: 0.75rem;
+                margin: 1rem auto;
+            }
+
+            .section-title {
+                margin-bottom: 2rem;
+                padding: 1.5rem;
+            }
+
+            .section-title h2 {
+                font-size: 2rem;
+            }
+
+            .section-title p {
+                font-size: 1rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .pricing-container {
+                grid-template-columns: 1fr;
+            }
+
+            .container {
+                padding: 1.5rem;
+            }
+
+            h1 {
+                font-size: 2.5rem;
             }
         }
 
@@ -453,7 +534,7 @@
             max-width: 1200px;
             margin: 0 auto;
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 2rem;
             padding: 2rem;
         }
@@ -489,7 +570,7 @@
         }
 
         .pricing-subtitle {
-            color: #666;
+            color: var(--text-secondary);
             font-size: 1.1rem;
         }
 
@@ -498,25 +579,26 @@
             margin-bottom: 2rem;
         }
 
+        .price-list li {
+            padding: 1rem 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 1.1rem;
+            gap: 1rem;
+        }
+
+        .price-list li:last-child {
+            border-bottom: none;
+        }
+
         .price-list li span:first-child {
             font-size: 1.1rem;
             display: flex;
             align-items: center;
             gap: 0.5rem;
-        }
-
-        .price-list li span:first-child::before {
-            content: '🚣';
-            font-size: 1.2rem;
-        }
-
-        .price-list li {
-            padding: 1rem 0;
-            border-bottom: 1px solid #eee;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            font-size: 1.1rem;
+            color: var(--text);
         }
 
         .price-highlight {
@@ -531,36 +613,42 @@
 
         .reservation-note {
             text-align: center;
-            background: #e3f2fd;
+            background: rgba(59, 130, 246, 0.1);
             padding: 1rem;
-            border-radius: 8px;
+            border-radius: 12px;
             margin-top: 2rem;
             font-size: 0.9rem;
-            color: #1976d2;
+            color: var(--text);
+            border: 1px solid rgba(59, 130, 246, 0.2);
+            backdrop-filter: blur(12px);
         }
 
         .section-title {
             text-align: center;
             margin-bottom: 3rem;
-            background: rgba(0, 0, 0, 0.7);
+            background: rgba(15, 23, 42, 0.8);
             padding: 2rem;
-            border-radius: 15px;
-            backdrop-filter: blur(10px);
+            border-radius: 24px;
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
         }
 
         .section-title h2 {
             font-size: 2.5rem;
-            color: #2196f3;
+            color: var(--primary);
             margin-bottom: 1rem;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+            font-weight: 700;
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
 
         .section-title p {
-            color: #e3f2fd;
+            color: var(--text-secondary);
             font-size: 1.2rem;
             max-width: 600px;
             margin: 0 auto;
-            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+            font-weight: 500;
         }
 
         /* Location & Safety Section Styles */
