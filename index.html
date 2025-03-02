@@ -17,7 +17,6 @@
             min-height: 100vh;
             color: white;
             overflow-x: hidden;
-            cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32"><path d="M16 2 L18 2 L20 30 L14 30 Z" fill="%23855E42"/><path d="M17 2 C17 2 8 8 4 12" stroke="%23666" stroke-width="2" fill="none"/><circle cx="3" cy="12" r="2" fill="%23666"/></svg>') 16 16, auto;
         }
 
         .nav-bar {
@@ -60,7 +59,6 @@
             color: white;
             text-decoration: none;
             transition: color 0.3s ease;
-            cursor: pointer;
         }
 
         .nav-links a:hover {
@@ -304,13 +302,50 @@
             }
         }
 
-        /* Add hover effect for clickable elements */
-        .nav-links a, .submit-btn {
+        /* Music Player Styles */
+        .music-player {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: rgba(0, 0, 0, 0.8);
+            padding: 15px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            z-index: 1000;
+            backdrop-filter: blur(5px);
+        }
+
+        .music-player button {
+            background: #2196f3;
+            color: white;
+            border: none;
+            padding: 8px 15px;
+            border-radius: 5px;
             cursor: pointer;
+            font-size: 0.9rem;
+            transition: background 0.3s ease;
+        }
+
+        .music-player button:hover {
+            background: #1976d2;
+        }
+
+        .music-player .volume-control {
+            width: 100px;
         }
     </style>
 </head>
 <body>
+    <div class="music-player">
+        <button onclick="toggleMusic()" id="musicToggle">Play Music</button>
+        <input type="range" class="volume-control" min="0" max="1" step="0.1" value="0.5" onchange="updateVolume(this.value)">
+        <audio id="bgMusic" loop>
+            <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mp3">
+            Your browser does not support the audio element.
+        </audio>
+    </div>
     <div class="fish-container">
         <div class="fish"></div>
         <div class="fish"></div>
@@ -417,6 +452,29 @@
 
         // Trigger initial scroll check
         window.dispatchEvent(new Event('scroll'));
+
+        // Music Player Controls
+        const bgMusic = document.getElementById('bgMusic');
+        const musicToggle = document.getElementById('musicToggle');
+        let isPlaying = false;
+
+        function toggleMusic() {
+            if (isPlaying) {
+                bgMusic.pause();
+                musicToggle.textContent = 'Play Music';
+            } else {
+                bgMusic.play();
+                musicToggle.textContent = 'Pause Music';
+            }
+            isPlaying = !isPlaying;
+        }
+
+        function updateVolume(value) {
+            bgMusic.volume = value;
+        }
+
+        // Initialize volume
+        bgMusic.volume = 0.5;
     </script>
 </body>
 </html> 
