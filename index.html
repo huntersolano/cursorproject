@@ -397,21 +397,42 @@
             }
 
             .section {
-                padding: 100px 16px;
+                min-height: 100vh;
+                height: 100vh;
+                padding: 80px 16px;
+                overflow: hidden;
+            }
+
+            #pricing {
+                display: flex;
+                flex-direction: column;
+            }
+
+            .pricing-container {
+                flex: 1;
+                overflow-y: auto;
+                padding: 1rem;
+                gap: 1.5rem;
+                grid-template-columns: 1fr;
+                margin: 0;
+                -webkit-overflow-scrolling: touch;
+            }
+
+            .section-title {
+                margin-bottom: 1rem;
+                padding: 1rem;
+            }
+
+            .pricing-card {
+                margin-bottom: 1.5rem;
+            }
+
+            .pricing-card:last-child {
+                margin-bottom: 0;
             }
 
             .container {
                 padding: 2rem 1.5rem;
-            }
-
-            .pricing-container {
-                padding: 1rem;
-                gap: 1.5rem;
-            }
-
-            .pricing-card {
-                padding: 1.5rem;
-                font-size: 0.95rem;
             }
 
             .pricing-title {
@@ -424,9 +445,10 @@
 
             .price-list li {
                 padding: 0.75rem 0;
-                flex-direction: column;
-                align-items: flex-start;
-                gap: 0.5rem;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                gap: 1rem;
             }
 
             .price-list li span:first-child {
@@ -436,8 +458,8 @@
             .price-highlight {
                 font-size: 1.1rem;
                 padding: 0.5rem 1rem;
-                width: 100%;
-                text-align: center;
+                text-align: right;
+                white-space: nowrap;
             }
 
             .reservation-note {
@@ -461,6 +483,11 @@
         }
 
         @media (max-width: 480px) {
+            .section {
+                height: 100vh;
+                min-height: 100vh;
+            }
+
             .pricing-container {
                 grid-template-columns: 1fr;
             }
